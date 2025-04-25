@@ -22,6 +22,12 @@ pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062
 3305727036575959195309218611738193261179310511854807446237996274956735188575272489122793818301194912
 ded = False
 
+def collision(xpos, ypos):
+    if math.sqrt((xpos - 400)**2 + (ypos - 400)**2) > 200:
+        print("OUT")
+    else:
+        print("IN")
+
 # game loop ###############################################################################################
 while True:
     event = pygame.event.wait()
@@ -39,6 +45,8 @@ while True:
 
     if event.type == pygame.MOUSEMOTION:
         mousePos = event.pos
+
+    collision(mousePos[0], mousePos[1])
 
     # update
 
@@ -71,7 +79,7 @@ while True:
     pygame.draw.arc(screen, (155, 155, 0), (200, 200, 400, 400), pi, (3 * pi / 2), 100)
     pygame.draw.arc(screen, (0, 0, 155), (200, 200, 400, 400), (3 * pi / 2), 2 * pi, 100)
     pygame.display.flip()
-    pygame.time.wait(800)
+    #pygame.time.wait(800)
 
     # render
     pygame.draw.arc(screen, (0, 155, 0), (200, 200, 400, 400), pi / 2, pi, 100) # GREEN
