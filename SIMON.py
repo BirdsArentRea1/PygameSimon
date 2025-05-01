@@ -104,8 +104,19 @@ while True:
     pygame.display.flip()
     #pygame.time.wait(800)
 
-    playerPattern.append(collision(mousePos[0], mousePos[1]))
-    print(playerPattern)
+    # PLAYER TURN ========================================================================================
+    print("starting player turn")
+    if playerTurn == True:
+        if len(playerPattern) < len(pattern):
+            if hasClicked == True:
+                playerPattern.append(collision(mousePos[0], mousePos[1]))
+                hasClicked = False
+
+    else:
+        playerTurn = False
+        pygame.time.wait(800)
+
+    # MACHINE TURN =======================================================================================
 
     # render
     pygame.draw.arc(screen, (0, 155, 0), (200, 200, 400, 400), pi / 2, pi, 100) # GREEN
